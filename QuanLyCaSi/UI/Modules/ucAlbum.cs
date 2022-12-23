@@ -201,41 +201,24 @@ namespace QuanLyCaSi.UI.Modules
 
         private void btn_sortDesc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            var result = from c in db.Album
+                         select new
+                         {
+                             MaAlbum = c.MaAlbum,
+                             TenAlbum = c.TenAlbum,
+                             MaNSX = c.MaNSX,
+                             GiaTien = c.GiaTien
+                         };
             if (sortItem.Equals("MaAlb"))
             {
-                var result = from c in db.Album
-                             select new
-                             {
-                                 MaAlbum = c.MaAlbum,
-                                 TenAlbum = c.TenAlbum,
-                                 MaNSX = c.MaNSX,
-                                 GiaTien = c.GiaTien
-                             };
                 dtGV_Album.DataSource = result.OrderByDescending(o => o.MaAlbum).ToList();
             }
             else if (sortItem.Equals("TenAlb"))
             {
-                var result = from c in db.Album
-                             select new
-                             {
-                                 MaAlbum = c.MaAlbum,
-                                 TenAlbum = c.TenAlbum,
-                                 MaNSX = c.MaNSX,
-                                 GiaTien = c.GiaTien
-                             };
                 dtGV_Album.DataSource = result.OrderByDescending(o => o.TenAlbum).ToList();
             }
             else
             {
-                var result = from c in db.Album
-                             select new
-                             {
-                                 MaAlbum = c.MaAlbum,
-                                 TenAlbum = c.TenAlbum,
-                                 MaNSX = c.MaNSX,
-                                 GiaTien = c.GiaTien
-                             };
                 dtGV_Album.DataSource = result.OrderByDescending(o => o.GiaTien).ToList();
             }
         }
